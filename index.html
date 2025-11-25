@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimización de Beneficio (Análisis Avanzado)</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <header>
+        <p style="font-size: 1.1em; font-weight: bold; color: var(--color-primary);">Matemáticas I: Negocios Internacionales</p>
+        <h1>📈 Optimización de Beneficio Empresarial</h1>
+        <p>Análisis de una Función aplicada a la Inversión en Publicidad.</p>
+        <p style="font-style: italic; font-size: 0.9em; margin-top: 15px;">
+            Autor: <strong>Melanie Sofía Martínez Jiménez</strong>
+        </p>
+    </header>
+
+    <main>
+        
+        <section id="introduccion">
+            <h2>0. Introducción y Contexto del Modelo</h2>
+            <p><strong>Planteamiento:</strong> La empresa "TechGlobal Corp" utiliza el siguiente modelo cúbico para determinar el Beneficio Neto (G, en miles de USD) en función de la Inversión en Publicidad (x, en miles de USD).</p>
+            <p>$$G(x)=-x^{3}+6x^{2}+15x-10$$</p>
+            
+            <div class="resultado-clasificacion">
+                <h4>Interpretación del Modelo Cúbico:</h4>
+                <p>Las funciones de tercer grado modelan fenómenos con <strong>saturación y rendimientos decrecientes</strong>. Esto refleja el comportamiento real del mercado:</p>
+                <ul>
+                    <li>Inicialmente, pequeñas inversiones generan grandes beneficios (curva ascendente).</li>
+                    <li>Llega un punto donde el mercado se satura y la efectividad publicitaria cae.</li>
+                    <li>Grandes inversiones más allá del punto óptimo pueden generar <strong>pérdidas</strong>.</li>
+                </ul>
+                <p><strong>Punto de Partida (x=0):</strong> Si no hay inversión, $G(0) = -10$. Esto significa que la empresa asume una <strong>pérdida de $10,000 USD</strong> por costos fijos o de producción antes de iniciar la campaña.</p>
+            </div>
+        </section>
+        
+        <section id="analisis">
+            <h2>Paso 1: Beneficio Marginal y Puntos Críticos</h2>
+            <p>El punto clave en la optimización es donde el <strong>Beneficio Marginal es cero</strong> ($G'(x)=0$), indicando que la pendiente de la función de beneficio es horizontal.</p>
+            
+            <div class="resultado-clasificacion">
+                <h4>1.1 Cálculo de la Primera Derivada:</h4>
+                <p>$$G'(x) = \frac{d}{dx} (-x^3 + 6x^2 + 15x - 10) = -3x^2 + 12x + 15$$</p>
+                
+                <h4>1.2 Hallazgo de Raíces (Puntos Críticos):</h4>
+                <p>Igualamos la derivada a cero y resolvemos para encontrar las posibles zonas óptimas:</p>
+                <p>Raíces: <strong>$x_1 = 5$</strong> y <strong>$x_2 = -1$</strong></p>
+            </div>
+
+            <p class="nota" style="margin-top: 20px;">
+                💡 <strong>Interpretación Económica de $G'(x)$</strong>: Mientras $G'(x) > 0$, el beneficio está creciendo; el último dólar invertido genera más de un dólar de ganancia. Cuando $G'(x) = 0$, el costo marginal es igual al ingreso marginal.
+            </p>
+        </section>
+
+        <section id="inflexion">
+            <h2>Paso 2: Punto de Máxima Eficiencia (Punto de Inflexión)</h2>
+            <p>El punto de inflexión se encuentra donde la <strong>segunda derivada es cero</strong> ($G''(x)=0$), representando el punto de <strong>Máxima Tasa de Crecimiento</strong> del beneficio.</p>
+
+            <div class="resultado-clasificacion">
+                <h4>2.1 Cálculo de la Segunda Derivada:</h4>
+                <p>$$G''(x) = \frac{d}{dx} (-3x^2 + 12x + 15) = -6x + 12$$</p>
+                
+                <h4>2.2 Hallazgo del Punto de Inflexión:</h4>
+                <p>Igualamos la segunda derivada a cero: $$-6x + 12 = 0 \Rightarrow x = 2$$</p>
+            </div>
+            <p class="nota">
+                ✅ <strong>Conclusión del Punto de Inflexión:</strong> La curva de beneficio tiene su mayor pendiente cuando la inversión es <strong>$x=2$ (2,000 USD)</strong>. Es el punto donde la campaña publicitaria es <strong>más eficiente</strong>.
+            </p>
+        </section>
+
+        <section id="clasificacion">
+            <h2>Paso 3: Clasificación del Óptimo (Criterio de $G''(x)$)</h2>
+            <p>Usamos la segunda derivada $G''(x) = -6x + 12$ para clasificar los puntos críticos y confirmar el máximo.</p>
+            
+            <div class="resultado-clasificacion">
+                <h4>Análisis de $x=5$:</h4>
+                <p>Evaluamos $G''(5) = -18$ (Resultado Negativo $<0$).</p>
+                <p>Confirma <strong>Concavidad Hacia Abajo</strong> y un <strong>MÁXIMO RELATIVO</strong>.</p>
+                
+                <p class="nota">⚠️ <strong>Viabilidad Económica:</strong> El punto $x=-1$ se descarta. El punto de interés económico es el máximo en <strong>$x = 5$ mil USD</strong>.</p>
+            </div>
+        </section>
+        
+        <section id="interactividad">
+            <h2>Prueba Interactiva: Calcula tu Beneficio</h2>
+            <p>Ingresa la inversión en publicidad ($x$) que deseas probar (en miles de USD, por ejemplo, 5 para $5,000):</p>
+            
+            <div class="input-group">
+                <label for="inversion">Inversión (x, miles de USD):</label>
+                <input type="number" id="inversion" value="5" min="0" step="0.1">
+                <button onclick="calcularYMostrarBeneficio()">Calcular Beneficio</button>
+            </div>
+            
+            <div id="resultado-calculado" class="resultado-dinamico">
+                </div>
+        </section>
+
+        <section id="recomendacion-estrategica">
+            <h2>Paso 4: Conclusión Final y Estrategia de Inversión</h2>
+            <p>Sustituyendo el valor óptimo $x=5$ en la función original $G(5) = 90$ (miles de USD).</p>
+            <p class="estrategia-optima">
+                <strong>RECOMENDACIÓN FINAL:</strong> Invertir exactamente <strong>$5,000 USD</strong> (x=5) para obtener un Beneficio Máximo de <strong>$90,000 USD</strong>. Este punto marca la <strong>saturación total del mercado</strong>.
+            </p>
+
+            <div class="estrategia-intervalos">
+                <h4>Decisión de la Empresa (Estrategia por Intervalos):</h4>
+                <ul>
+                    <li><strong>Intervalo (0, 5):</strong> <strong>INVERTIR MÁS</strong>. El beneficio marginal es positivo.</li>
+                    <li><strong>x=2 (Inflexión):</strong> Máxima eficiencia. Se debe acelerar la inversión hasta este punto.</li>
+                    <li><strong>x=5 (Máximo):</strong> <strong>MANTENER</strong>. Es el punto de Beneficio Máximo.</li>
+                    <li><strong>Intervalo (5, ∞):</strong> <strong>DETENER INVERSIÓN</strong>. El beneficio marginal es negativo.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
